@@ -35,7 +35,7 @@ python demo_train.py --model=TRANSENET --dataset=UCMerced --scale=2 --patch_size
 The train/val data pathes are set in [data/__init__.py](codes/data/__init__.py) 
 
 ## Test 
-The test data path and the save path can be edited in [demo_deploy.py](codes/demo_deploy.py)
+The trained HSENet model on UCMerced and AID datasets can be found here [[Baidu Drive](https://pan.baidu.com/s/1lvAyTagbBf5GWUOcuEkyrQ), password:w7ct][[Google Drive](https://drive.google.com/file/d/19nH1Plh2M-Z47iXG0-Ghq-Orh33n787w/view)]. The test data path and the save path can be edited in [demo_deploy.py](codes/demo_deploy.py)
 
 ```
 # x4
