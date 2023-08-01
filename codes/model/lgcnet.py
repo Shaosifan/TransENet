@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 
 def make_model(args, parent=False):
-    return CNN7(args)
+    return LGCNET(args)
 
 class LGCNET(nn.Module):
     def __init__(self, args, nfeats = 32):
