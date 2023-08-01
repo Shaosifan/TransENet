@@ -27,7 +27,6 @@ class BasicModule(nn.Module):
             n_blocks = 10
             m_body = [
                 common.BasicBlock(conv, n_feat, n_feat, kernel_size, bias=bias, bn=bn)
-                # common.ResBlock(conv, n_feat, kernel_size)
                 for _ in range(n_blocks)
             ]
         elif block_type == 'residual':
@@ -63,6 +62,7 @@ class TransENet(nn.Module):
         act = nn.ReLU(True)
 
         rgb_mean = (0.4916, 0.4991, 0.4565)  # UCMerced data
+        # rgb_mean = (0.3973, 0.4088, 0.3683) # AID data
         rgb_std = (1.0, 1.0, 1.0)
         self.sub_mean = common.MeanShift(args.rgb_range, rgb_mean, rgb_std)
 
@@ -133,8 +133,8 @@ class TransENet(nn.Module):
 
         # feature extraction part
         feat_stage1 = self.feat_extrat_stage1(x)
-        feat_stage2 = self.feat_extrat_stage2(x)
-        feat_stage3 = self.feat_extrat_stage3(x)
+        feat_stage2 = self.feat_extrat_stage2(feat_stage1)
+        feat_stage3 = self.feat_extrat_stage3(feat_stage2)
         feat_ups = self.upsampler(feat_stage3)
 
         feat_stage1 = self.stage1_conv1x1(feat_stage1)
